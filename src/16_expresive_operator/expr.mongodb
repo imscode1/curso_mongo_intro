@@ -1,0 +1,21 @@
+use("platzi_store")
+
+// Busca los spent que sean igual o mayor a 100
+// db.monthlyBudget.find({ spent: { $gte: 100 } })
+
+// Busca los spent que sean igual o mayor a 100, con el operador expresivo
+// db.monthlyBudget.find({ 
+//     $expr: {
+//         $gte: ["$spent", 100]
+//     }
+// })
+
+/*
+    Nota: la ventaja de $expr no es en el tipo de consulta anterior ya que puede ser mejor usar la primera opcion, 
+    sino para comparar valores de un mismo documento, como en el ejemplo mas abajo
+*/
+db.monthlyBudget.find({ 
+    $expr: {
+        $gte: ["$spent", "$budget"]
+    }
+})

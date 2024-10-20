@@ -1,0 +1,13 @@
+use("platzi_store")
+
+//Inserta un unico documento
+db.products.insertOne( { 
+    name: "Product 1",
+    price: 1000
+ } )
+
+db.products.insertOne( { 
+    name: "Product 2",
+    price: 100
+ } )
+

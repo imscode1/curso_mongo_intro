@@ -1,0 +1,6 @@
+use("sample_training")
+
+// Busca todos los que sean del estado de New York
+//db.zips.find();
+
+db.zips.find( { city: "CLEVELAND" } );

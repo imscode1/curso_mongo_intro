@@ -1,0 +1,13 @@
+use("sample_training")
+
+// Actualizamos un documento
+db.zips.updateMany( 
+    // Query
+    { city: "CLEVELAND" }, 
+    // Update => Operators, eliminamos un atributo existente
+    {
+        $unset: { 
+            my_data: "",
+        } 
+    }
+)

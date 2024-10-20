@@ -1,0 +1,42 @@
+use("platzi_store")
+
+
+// $in, sirve para valores y arrays, permite pasar un array, funciona como un OR, traera cualquier elemento que coincida
+// db.inventory.find({ qty: { $in: [20, 25] } })
+// db.inventory.find({ tags: { $in: ["school", "electronics"] } })
+
+// $ni, es not in sirve para objetos y arrays, es lo contrario a $in, los valores diferentes a los puestos en la busqueda
+// db.inventory.find({ qty: { $nin: [20, 25] } })
+// db.inventory.find({ tags: { $nin: ["book", "electronics"] } })
+
+// Values
+// db.inventory.find({ tags: "book" })
+// Al pasarlo de esta manera busca los valores, pero en esa posicion, por lo que invertirlo tendra un efecto
+// db.inventory.find({ tags: ["school", "book"] })
+// db.inventory.find({ tags: ["book", "school"] })
+
+/* 
+    La solucion es la siguiente: $all solo sirve para array, todos los elementos pasados deben estar presentes, 
+    funciona como un and
+*/
+// db.inventory.find({ tags: { $all: ["book", "school"] } })
+
+/*
+    $size, solo funciona para array, busca arreglos que tengan una logitud igual a la especificada, 
+    sin importar lo que tenga dentro
+    */
+// db.inventory.find({ tags: { $size: 2 } })
+
+/*
+    $elemMatch, solo sirve para array, 
+    es bueno usarlo cuando el arreglo tiene objetos dentro para ser mas especifico,
+    busca los documentos que tengan un campo que cumpla con el criterio de consulta
+*/
+db.survey.find({ 
+    results: { 
+        $elemMatch: { 
+            product: "xyz", 
+            score: { $gte: 7 } 
+        } 
+    } 
+})

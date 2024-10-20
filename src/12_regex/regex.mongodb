@@ -1,0 +1,22 @@
+use("platzi_store")
+
+// /i -> no es case sensitive
+// /m -> hay saltos de líneas
+
+/* El texto del find debe ser igual al almacenado, es case sensitive  */
+//db.inventory.find({ "item.description": "Single line description." })
+
+/* Busca la palabra line en cualquier parte de la descripción, pero es case sensitive */
+//db.inventory.find({ "item.description": { $regex: /line/ } })
+
+/* Busca la palabra line en cualquier parte de la descripción, pero con i indicamos que no es case sensitive*/
+//db.inventory.find({ "item.description": { $regex: /LINE/i } })
+
+/* Busca la palabra line que se encuentre al final del documento y no es case sensitive */
+//db.inventory.find({ "item.description": { $regex: /line$/i } })
+
+/* Busca la palabra single al inicio de la descripción y no es case sensitive */
+//db.inventory.find({ "item.description": { $regex: /^single/i } })
+
+/* Busca cualquier parrafo que inicia con s, no es case sensitive o inician despues de un salto de linea */
+db.inventory.find({ "item.description": { $regex: /^s/im } })

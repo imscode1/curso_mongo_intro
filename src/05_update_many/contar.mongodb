@@ -1,0 +1,4 @@
+use("sample_training")
+
+// Cuento todos los registros que sean del estado de New York
+db.zips.find( { city: "CLEVELAND" } ).count();

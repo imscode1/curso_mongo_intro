@@ -1,0 +1,12 @@
+use("sample_training")
+
+/*
+    Buscamos la densidad poblacional igual o mayor a 100
+    En sort
+        1 es ordenar ascendente => ( 0 - 10 ) o ( A - Z )
+        -1 es ordenar descendente => ( 10 - 0 ) o ( Z - A )
+*/
+db.zips
+    .find({ pop: { $gte: 100 } })
+    .sort({ pop: -1 })
+    .limit(2)

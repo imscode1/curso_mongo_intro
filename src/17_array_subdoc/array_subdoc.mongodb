@@ -1,0 +1,31 @@
+use("sample_training")
+
+// db.trips.find({ "end station location.type": "Point" })
+
+// Buscamos todas las compañias donde el apellido del Founder and CEO sea Zuckerberg
+// db.companies.find({
+//     "relationships.0.person.last_name": "Zuckerberg"
+// }, {
+//     name: 1,
+//     relationships: 1
+// })
+
+// Compañias donde su Founder and CEO se llama Mark
+// db.companies.find({
+//     "relationships.0.person.first_name": "Mark"
+// }, {
+//     name: 1,
+//     relationships: 1
+// }).count()
+
+// Personas que estan relacionadas con una compañia y su nombre sea Mark
+db.companies.find({
+    relationships: {
+        $elemMatch: {
+            "person.first_name": "Mark"
+        }
+    }
+}, {
+    name: 1,
+    relationships: 1
+})

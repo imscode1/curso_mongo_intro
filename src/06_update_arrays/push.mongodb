@@ -1,0 +1,8 @@
+use("platzi_store")
+
+db.inventory.updateOne( { _id: 4 }, {
+    // Push se utiliza para agregar elementos de un arreglo
+    $push: {
+        tags: "headphone"
+    }
+} )

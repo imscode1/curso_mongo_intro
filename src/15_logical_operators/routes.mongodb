@@ -1,0 +1,25 @@
+use("sample_training")
+
+// Buscamos todos los aviones modelos E70
+// db.routes.find({ airplane: "E70" })
+
+// Buscamos todos los buelos que han ido o salido de bogotá
+// db.routes.find({ 
+//     $or: [
+//         { dst_airport: "BOG" },
+//         { src_airport: "BOG" }
+//     ],
+// }).count()
+
+// Buscamos todos los aviones modelos E70 que han ido o salido de bogotá
+db.routes.find({ 
+    $and: [
+        { airplane: "E70" },
+        {
+            $or: [
+                { dst_airport: "BOG" },
+                { src_airport: "BOG" }
+            ]
+        }
+    ]
+}).count()

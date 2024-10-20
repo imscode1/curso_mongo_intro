@@ -1,0 +1,40 @@
+use("sample_airbnb")
+
+// Esta es una consulta normal con MongoDB Query Languague (MQL)
+// db.listingsAndReviews.find({
+//     amenities: "Wifi"
+// }, {
+//     price: 1,
+//     amenities: 1
+// })
+
+/* 
+    Consulta con Aggregation Framework
+    Utiliza los Pipeline: 
+        $match, $unwind, $group, $sort, $limit, $project y $skip
+        La estructura es la siguiente:
+            [ {}, {}, {}, {} ]
+*/
+db.listingsAndReviews.aggregate([
+    { 
+        // Para filtrar, es el equivalente al find
+        $match: {
+            amenities: "Wifi"
+        } 
+    },
+    {
+        // Para el Project
+        $project: {
+            address: 1
+            // price: 1,
+            // amenities: 1
+        }
+    },
+    {
+        // Agrupamos
+        $group: {
+          _id: "$address.country", 
+          count: { $sum: 1 }
+        }
+    }
+])

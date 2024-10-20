@@ -1,0 +1,29 @@
+use("platzi_store")
+
+// Insertamos un documento
+// db.iot.insertOne({
+//     sensor: "A001",
+//     date: "2022-01-03",
+//     readings: [1212]
+// })
+
+// Actualizamos el documento
+// db.iot.updateOne({
+//     sensor: "A001",
+//     date: "2022-01-03"
+// }, {
+//     // Elimina la posición 1 del arreglo, no toca la posicion 0
+//     $pop: {
+//         readings: 1
+//     }
+// })
+
+// Actualizamos el documento
+db.iot.updateOne({
+    sensor: "A001",
+    date: "2022-01-03"
+}, {
+    $push: {
+        readings: 2323
+    }
+})

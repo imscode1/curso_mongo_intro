@@ -1,0 +1,13 @@
+use("sample_training")
+
+// Actualizamos un documento
+db.zips.updateMany( 
+    // Query
+    { city: "CLEVELAND" }, 
+    // Update => Operators, renombramos el nombre del atributo al nuevo nombre sin modificar el valor
+    {
+        $rename: { 
+            myAttr: "my_data",
+        } 
+    }
+)

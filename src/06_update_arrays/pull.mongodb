@@ -1,0 +1,20 @@
+use("platzi_store")
+
+// Quitamos un unico elemento del arreglo
+// db.inventory.updateMany( {}, {
+//     // Pull se utiliza para quitar elementos de un arreglo
+//     $pull: {
+//         tags: "headphone"
+//     }
+// } )
+
+
+// Quitamos varios elemento dentro del arreglo de $in
+db.inventory.updateMany( {}, {
+    // Pull se utiliza para quitar elementos de un arreglo
+    $pull: {
+        tags: {
+            $in: [ "appliance", "school" ]
+        }
+    }
+} )

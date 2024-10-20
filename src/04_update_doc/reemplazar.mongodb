@@ -1,0 +1,16 @@
+use("platzi_store")
+
+// Actualizamos el producto con ID 2
+db.products.updateOne( 
+    // Query
+    { _id: 2 }, 
+    // Change => Operators
+    {
+        // Reemplazamos todo el documento y solo dejamos los siguientes campos
+        $set: { 
+            name: "Change name",
+            price: 3000.80,
+            tags: ['A', 'B', 'C']
+        } 
+    }
+)

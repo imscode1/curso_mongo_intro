@@ -1,0 +1,12 @@
+use("platzi_store")
+
+// Usando $eq -> Igual que (equals)
+// db.inventory.find( { qty: 20 } ) // Forma implicita, por defecto
+
+// db.inventory.find( { qty: { $eq: 20 } } ) // Forma explicita
+
+// db.inventory.find( { "item.name": "ab" } ) // Buscar dentro de un subdocumento
+
+
+// Usando $ne -> No es igual que (not equals)
+db.inventory.find( { qty: { $ne: 20 } } )

@@ -1,0 +1,14 @@
+use("platzi_store")
+
+// Decide cuando insertar o cuando actualizar de manera dinamica (upsert - solo funciona con update)
+db.iot.updateOne({
+    sensor: "A001",
+    date: "2022-01-04"
+}, {
+    $push: {
+        readings: 12434
+    }
+},
+{
+    upsert: true
+})

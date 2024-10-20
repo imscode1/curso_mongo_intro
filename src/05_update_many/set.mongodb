@@ -1,0 +1,13 @@
+use("sample_training")
+
+// Actualizamos un documento
+db.zips.updateMany( 
+    // Query
+    { city: "CLEVELAND" }, 
+    // Update => Operators, creamos un nuevo atributo y le damos valor
+    {
+        $set: { 
+            myAttr: "Hola",
+        } 
+    }
+)

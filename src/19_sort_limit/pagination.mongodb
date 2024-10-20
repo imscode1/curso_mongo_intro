@@ -1,0 +1,7 @@
+use("platzi_store")
+
+// Creando una paginación parecida a la de las paginas web
+db.categories
+    .find()
+    .skip(0)
+    .limit(2)

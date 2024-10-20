@@ -1,0 +1,26 @@
+use("platzi_store")
+
+//Inserta varios documentos
+db.products.insertMany( [
+    {
+        _id: 1,
+        name: "Product 1",
+        price: 1000
+    },
+    {
+        _id: 2,
+        name: "Product 2",
+        price: 100
+    },
+    {
+        _id: 3,
+        name: "Product 2",
+        price: 100
+     }
+],
+    {
+        // Si hay un error, lo salta y continua con las demas insercciones
+        ordered: false
+    }
+)
+

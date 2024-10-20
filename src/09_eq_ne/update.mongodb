@@ -1,0 +1,14 @@
+use("platzi_store")
+
+
+// Usando $ne -> No es igual que (not equals)
+db.inventory.updateMany( 
+    // Query - Operators
+    { qty: { $ne: 20 } },
+    // Update operators
+    { 
+        $inc: {
+            qty: 10
+        }
+    }
+)
